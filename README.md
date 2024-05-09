@@ -13,6 +13,7 @@ First, clone this directory on a server:
 git clone https://github.com/rollmug/sci-cosmic-playlist.git
 # then:
 cd sci-cosmic-playlist
+npm install
 ```
 
 ### Set Environment vars:
@@ -30,7 +31,7 @@ NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
 ```
 
 
-### Development run:
+### Development:
 
 To run the development server in Node (for testing):
 
