@@ -1,10 +1,9 @@
-version: "3.8"
 services:
   cosmic-playlist:
     container_name: cosmic-playlist
     build:
       context: . 
-      target: dev
+      target: builder
     restart: always
     command: npm run dev
     environment:
