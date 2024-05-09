@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  cosmic-playlist:
+    container_name: cosmic-playlist
+    build:
+      context: . 
+      target: dev
+    restart: always
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+      #if you’re using Windows, you may need to uncomment the next line
+      #- WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - 3000:3000
