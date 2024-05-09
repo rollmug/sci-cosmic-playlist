@@ -11,7 +11,24 @@ First, clone this directory on a server:
 
 ```bash
 git clone https://github.com/rollmug/sci-cosmic-playlist.git
+# then:
+cd sci-cosmic-playlist
 ```
+
+### Set Environment vars:
+
+In the project root directory, create a file called `.env.local` and add the following text, configuring the URLs as needed:
+
+```dotenv
+SCI_CONTROL_API_URL=https://path-to-api
+GRAPHQL_URL=https://path-to-directus/graphql
+FILES_BASE_URL=https://path-to-directus/assets
+
+CACHE_DELAY=20
+NEXT_PUBLIC_SCI_CONTROL_API_URL=$SCI_CONTROL_API_URL
+NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
+```
+
 
 ### Development run:
 
