@@ -13,10 +13,13 @@ export const VisitorShows = (params) => {
     const { data, error, isLoading } = useSWR(
         visitorQuery,
         graphQLFetcher,
-        { refreshInterval: 10000 }
+        { refreshInterval: 100000 }
     );
 
-    if (error) return <div>Error loading</div>;
+    if (error) {
+        console.log(error);
+        return <div>Error loading</div>;
+    }
     if (isLoading) return <div>Loading...</div>;
 
     if (data.allPlaylists.length > 0) {
@@ -44,7 +47,10 @@ const graphQLFetcher = (query) => request(
     {
         url: process.env.NEXT_PUBLIC_GRAPHQL_URL,
         document: query,
-        variables: variables
+        variables: variables,
+        requestHeaders: {
+            "Content-Type": "application/json"
+        }
     }
 );
 
