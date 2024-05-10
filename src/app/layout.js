@@ -1,4 +1,3 @@
-import { ApolloWrapper } from "@/lib/apollo-provider";
 import "./globals.css";
 
 export const metadata = {
@@ -26,12 +25,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="night">
-      <body>
-        <ApolloWrapper>
-          {children}
-        </ApolloWrapper>
-      </body>
-    </html>
-  );
+    children
+  )
 }

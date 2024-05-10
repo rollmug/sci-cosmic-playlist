@@ -30,7 +30,6 @@ NEXT_PUBLIC_SCI_CONTROL_API_URL=$SCI_CONTROL_API_URL
 NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
 ```
 
-
 ### Development:
 
 To run the development server in Node (for testing):

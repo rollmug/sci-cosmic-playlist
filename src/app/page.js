@@ -1,11 +1,6 @@
-import React from "react";
-import { HomePage } from "@/components/Home";
-import { getMuseumFavs } from "@/lib/playlist-data";
+import { redirect } from 'next/navigation';
 
-export default async function Home() {
-  const museumFavs = await getMuseumFavs();
-
-  return (
-    <HomePage museumFavs={museumFavs} />
-  );
+// This page only renders when the app is built statically (output: 'export')
+export default function RootPage() {
+    redirect('/en');
 }
