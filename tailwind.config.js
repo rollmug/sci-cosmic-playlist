@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -28,8 +30,31 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    fontSize: {
+      'xs': '.75rem',
+      'sm': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '5rem',
+    },
     extend: {
+      fontFamily: {
+        'meta': ['var(--font-meta)'],
+        'duke': ['var(--font-duke)'],
+        'dukefill': ['var(--font-dukefill)'],
+        'dukeshadow': ['var(--font-dukeshadow)'],
+      },
       colors: {
+        star: {
+          100: "#FFF09F",
+          200: "#E6CE4A",
+        },
         night: {
           200: "#4C78D0",
           900: "#263C68",
@@ -62,5 +87,6 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
+    require("tailwindcss-text-fill"),
   ],
 };

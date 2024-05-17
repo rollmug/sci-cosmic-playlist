@@ -41,11 +41,11 @@ export const PlaylistBtn = ({ playlist, size="large" }) => {
         selectPlaylist(playlistID);
     }
 
-    var parentClasses = ['btn', 'h-auto', 'text-base', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
+    var parentClasses = ['btn', 'h-auto', 'font-normal', 'text-3xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
     var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-11 lg:h-11'].join(' ');
 
     if(size === 'small') {
-        parentClasses = ['btn', 'h-auto', 'text-xs', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
+        parentClasses = ['btn', 'h-auto', 'font-normal', 'text-xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
         imgClasses = ['w-5', 'h-5', 'md:w-6', 'md:h-6', 'lg:w-7', 'lg:h-7'].join(' ');
     }
 
@@ -59,7 +59,7 @@ export const PlaylistBtn = ({ playlist, size="large" }) => {
                     priority
                     alt="" />
             </div>
-            <span className={`text-${playlist.color.name}-secondary`}>{playlist.name}</span>
+            <span className={`text-${playlist.color.name}-secondary font-dukefill tracking-wider`}>{playlist.name}</span>
         </div>
     );
 }

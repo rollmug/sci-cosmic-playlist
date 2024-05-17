@@ -1,12 +1,9 @@
 'use client'
 
-import { Container } from "./Container";
 import { useTranslations } from 'next-intl';
 import { PlaylistBtn } from "./PlaylistButton";
-import Link from 'next/link';
 import useSWR from 'swr';
 import { gql, request } from 'graphql-request';
-import { Error } from "./Error";
 
 export const VisitorShows = (params) => {
     const t = useTranslations('home');
@@ -24,9 +21,9 @@ export const VisitorShows = (params) => {
 
     if (data.allPlaylists.length > 0) {
         return (
-            <div>
-                <div className="my-4">
-                    <p className="my-3">{t('visitors')}:</p>
+            <>
+                <div className="mb-4 mt-16">
+                    <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         {
                             data.allPlaylists.map((playlist) => (
@@ -37,7 +34,7 @@ export const VisitorShows = (params) => {
                         }
                     </div>
                 </div>
-            </div>
+            </>
 
         )
     }
