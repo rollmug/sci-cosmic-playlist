@@ -18,7 +18,7 @@ npm install
 
 ### Set Environment vars:
 
-In the project root directory, create a file called `.env.local` and add the following text, configuring the URLs as needed:
+In the project root directory, create a file called `.env.local` and add the following text, configuring the first three URLs as needed:
 
 ```dotenv
 SCI_CONTROL_API_URL=https://path-to-api
@@ -31,7 +31,7 @@ NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
 NEXT_PUBLIC_GRAPHQL_URL=$GRAPHQL_URL
 ```
 
-### Development:
+## Development:
 
 To run the development server in Node (for testing):
 
@@ -41,7 +41,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Production:
+## Production:
 
 For production use, run the following command:
 
@@ -50,3 +50,11 @@ docker-compose up -d --build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+
+
+## Updating to the Latest Version
+
+1. `cd` to the project root directory.
+2. stop the running services (ie, `docker-compose down`).
+3. Run `git pull`.
+4. Start services again: `docker-compose up -d --build`
