@@ -24,18 +24,11 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
         { refreshInterval: 5 * 1000 }
     );
 
-    if (error) {
-        return <Error data={{
-            error: 'The control API is not available.',
-            message: 'Error'
-        }} />
-    }
-
     useEffect(() => {
         if (data) {
             setStatusData(data);
 
-            if(data.currentPlaylist && data.currentPlaylist.id) {
+            if (data.currentPlaylist && data.currentPlaylist.id) {
                 const playlist = allPlaylists.find(x => x.id === data.currentPlaylist.id);
                 setCurrentPlaylistData(playlist);
             } else {
@@ -45,6 +38,13 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
             setStatusData(null);
         }
     }, [data]);
+
+    if (error) {
+        return <Error data={{
+            error: 'The control API is not available.',
+            message: 'Error'
+        }} />
+    }
 
     return (
         <Container className="">
@@ -84,9 +84,9 @@ const LanguageSwitcher = () => {
     return (
         <div className="flex flex-row justify-center my-8">
             <div className="flex flex-row gap-2 uppercase font-meta">
-                <Link href="/en/" className={`${locale === 'en' ? 'text-yellow-200': ''}`}>eng</Link>
+                <Link href="/en/" className={`${locale === 'en' ? 'text-yellow-200' : ''}`}>eng</Link>
                 <span>|</span>
-                <Link href="/es/" className={`${locale === 'es' ? 'text-yellow-200': ''}`}>esp</Link>
+                <Link href="/es/" className={`${locale === 'es' ? 'text-yellow-200' : ''}`}>esp</Link>
             </div>
         </div>
     );
