@@ -7,10 +7,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* .progress {
+  height: 1rem;
+  @apply !rounded-none bg-night-800 border-[1px] border-night-100;
+} */
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar,
+progress[value]::-webkit-progress-value,
+progress[value]::-moz-progress-bar {
+  border-radius: 0 !important;
+}
+
 .img-Green {
-  border-color: #89D938 ;
+  border-color: #89D938;
   border-width: 1px;
 }
+
 .img-Green img {
   filter: drop-shadow(0px 100px 0 #B0E25F);
   transform: translateY(-100px);

@@ -29,6 +29,44 @@ const GetMuseumFavs = gql`query GetMuseumFavs($filter: allPlaylists_filter, $sor
     }
   }`;
 
+export const getAllPlaylists = async () => {
+  try {
+    const client = getClient();
+    const { data } = await client.query({
+      query: GetMuseumFavs,
+      context: {
+        fetchOptions: {
+          next: { revalidate: revalidate },
+        }
+      },
+      variables: {
+        filter: {
+          name: {
+            "_nempty": true
+          },
+          icon: {
+            id: {
+              "_nnull": true
+            }
+          },
+          color: {
+            name: {
+              "_nnull": true
+            }
+          }
+        },
+        sort: ["-date_created"]
+      }
+    });
+    return data.allPlaylists;
+  } catch (error) {
+    return {
+      error: error.message,
+      message: "Error fetching data"
+    }
+  }
+}
+
 export const getMuseumFavs = async () => {
   try {
     const client = getClient();
@@ -68,23 +106,4 @@ export const getMuseumFavs = async () => {
       message: "Error fetching data"
     }
   }
-
-  // const client = getClient();
-  // const { data } = await client.query({
-  //   query: GetMuseumFavs,
-  //   context: {
-  //     fetchOptions: {
-  //       next: { revalidate: revalidate },
-  //     }
-  //   },
-  //   variables: {
-  //     filter: {
-  //       isMuseumFavorite: {
-  //         "_eq": true
-  //       }
-  //     },
-  //     sort: ["-date_created"]
-  //   }
-  // });
-  // return data.allPlaylists;
 }

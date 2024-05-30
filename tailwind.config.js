@@ -20,6 +20,17 @@ module.exports = {
     "text-Blue-secondary",
     "text-Purple-primary",
     "text-Purple-secondary",
+
+    "bg-Orange-primary",
+    "bg-Orange-secondary",
+    "bg-Yellow-primary",
+    "bg-Yellow-secondary",
+    "bg-Green-primary",
+    "bg-Green-secondary",
+    "bg-Blue-primary",
+    "bg-Blue-secondary",
+    "bg-Purple-primary",
+    "bg-Purple-secondary",
   ],
   theme: {
     screens: {
@@ -56,7 +67,9 @@ module.exports = {
           200: "#E6CE4A",
         },
         night: {
+          100: "#A2BEF5",
           200: "#4C78D0",
+          800: "#1E2339",
           900: "#263C68",
         },
         Purple: {
@@ -83,7 +96,14 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: ["night"],
+    themes: [
+      {
+        night: {
+          ...require("daisyui/src/theming/themes")["night"],
+          accent: "#A2BEF5",
+        }
+      }
+    ],
   },
   plugins: [
     require('daisyui'),

@@ -1,16 +1,17 @@
 import React from "react";
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { HomePage } from "@/components/Home";
-import { getMuseumFavs } from "@/lib/playlist-data";
+import { getMuseumFavs, getAllPlaylists } from "@/lib/playlist-data";
 import { Error } from "@/components/Error";
 
 export default async function Home({ params: { locale } }) {
     unstable_setRequestLocale(locale);
     const museumFavs = await getMuseumFavs();
+    const allPlaylists = await getAllPlaylists();
     const controlAPIStatus = process.env.SCI_CONTROL_API_URL + "/status";
 
     try {
-        // this is really just to check if the control API is available, not to doa anything with the data.
+        // this is really just to check if the control API is available, not to do anything with the data.
         const response = await fetch(controlAPIStatus, { cache: 'no-store' });
         const status = await response.json();
 
@@ -19,7 +20,7 @@ export default async function Home({ params: { locale } }) {
         }
 
         return (
-            <HomePage museumFavs={museumFavs} status={status} />
+            <HomePage museumFavs={museumFavs} allPlaylists={allPlaylists} />
         );
     } catch (error) {
         return <Error data={{

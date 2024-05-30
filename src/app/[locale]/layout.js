@@ -2,6 +2,9 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { ApolloWrapper } from "@/lib/apollo-provider";
 import localFont from 'next/font/local';
+import PlaylistProvider from '../playlistProvider';
+import StatusProvider from '../statusprovider';
+import DataProvider from '../dataProvider';
 
 export const generateStaticParams = () => {
     return [{ locale: 'en' }, { locale: 'es' }];
@@ -32,7 +35,13 @@ export default async function LocaleLayout({ children, params: { locale } }) {
             <body>
                 <NextIntlClientProvider locale={locale} messages={messages}>
                     <ApolloWrapper>
-                        {children}
+                        <DataProvider>
+                            <StatusProvider>
+                                <PlaylistProvider>
+                                    {children}
+                                </PlaylistProvider>
+                            </StatusProvider>
+                        </DataProvider>
                     </ApolloWrapper>
                 </NextIntlClientProvider>
             </body>

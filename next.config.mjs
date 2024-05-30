@@ -11,7 +11,19 @@ const nextConfig = {
                 hostname: 'rlmg-dev.ngrok.io',
                 port: '',
                 pathname: '/assets/**/**',
-              },
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '9980',
+                pathname: '/**',
+            },
+            {
+                protocol: 'http',
+                hostname: '10.0.11.176',
+                port: '8055',
+                pathname: '/**',
+            },
         ]
     },
 };

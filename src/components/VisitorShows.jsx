@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { PlaylistBtn } from "./PlaylistButton";
 import useSWR from 'swr';
 import { gql, request } from 'graphql-request';
+import { motion, AnimatePresence } from "framer-motion";
 
 export const VisitorShows = (params) => {
     const t = useTranslations('home');
@@ -17,25 +18,32 @@ export const VisitorShows = (params) => {
         console.log(error);
         return <div>Error loading</div>;
     }
-    if (isLoading) return <div>Loading...</div>;
+    
+    if (isLoading) return;
 
     if (data.allPlaylists.length > 0) {
         return (
-            <>
-                <div className="mb-4 mt-16">
-                    <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                        {
-                            data.allPlaylists.map((playlist) => (
-                                <div key={playlist.id}>
-                                    <PlaylistBtn playlist={playlist} size="small" />
-                                </div>
-                            ))
-                        }
+            <AnimatePresence>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    >
+                    <div className="mb-4 mt-16">
+                        <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                            {
+                                data.allPlaylists.map((playlist) => (
+                                    <div key={playlist.id}>
+                                        <PlaylistBtn playlist={playlist} size="small" />
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            </>
-
+                </motion.div>
+            </AnimatePresence>
         )
     }
 };
