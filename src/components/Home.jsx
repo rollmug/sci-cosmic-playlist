@@ -8,7 +8,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { Error } from "./Error";
 import { VisitorShows } from "./VisitorShows";
-import { StatusContext } from "@/app/statusprovider";
+import { StatusContext } from "@/app/statusProvider";
 import { DataContext } from "@/app/dataProvider";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 

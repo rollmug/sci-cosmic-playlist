@@ -4,7 +4,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlaylistContext } from "@/app/playlistProvider";
-import { StatusContext } from "@/app/statusprovider";
+import { StatusContext } from "@/app/statusProvider";
 import { DataContext } from "@/app/dataProvider";
 
 export const NowPlaying = () => {

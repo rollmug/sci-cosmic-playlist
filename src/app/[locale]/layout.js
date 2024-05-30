@@ -3,7 +3,7 @@ import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { ApolloWrapper } from "@/lib/apollo-provider";
 import localFont from 'next/font/local';
 import PlaylistProvider from '../playlistProvider';
-import StatusProvider from '../statusprovider';
+import StatusProvider from '../statusProvider';
 import DataProvider from '../dataProvider';
 
 export const generateStaticParams = () => {
