@@ -45,8 +45,8 @@ export const PlaylistBtn = ({ playlist, size = "large" }) => {
         selectPlaylist(playlistID);
     }
 
-    var parentClasses = ['btn', 'h-auto', 'font-normal', 'text-3xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
-    var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-11 lg:h-11'].join(' ');
+    var parentClasses = ['btn', 'h-auto', 'font-normal', 'text-2xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
+    var imgClasses = ['w-7', 'h-7', 'md:w-8 md:h-8', 'lg:w-9 lg:h-9'].join(' ');
 
     if (size === 'small') {
         parentClasses = ['btn', 'h-auto', 'font-normal', 'text-xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');

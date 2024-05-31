@@ -6,6 +6,8 @@ import useSWR from 'swr';
 import { gql, request } from 'graphql-request';
 import { motion, AnimatePresence } from "framer-motion";
 
+const limitShows = parseInt(process.env.NEXT_PUBLIC_LIMIT_SHOWS);
+
 export const VisitorShows = (params) => {
     const t = useTranslations('home');
     const { data, error, isLoading } = useSWR(
@@ -29,8 +31,9 @@ export const VisitorShows = (params) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
+                    className={params.className}
                 >
-                    <div className="mb-4 mt-16">
+                    <div className="mb-4 _mt-16">
                         <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                             {
@@ -84,11 +87,12 @@ const variables = {
             }
         ]
     },
-    sort: ["-date_created"]
+    sort: ["-date_created"],
+    limit: limitShows
 };
 
-const visitorQuery = gql`query AllPlaylists($filter: allPlaylists_filter, $sort: [String]) {
-    allPlaylists(filter: $filter, sort: $sort) {
+const visitorQuery = gql`query AllPlaylists($filter: allPlaylists_filter, $sort: [String], $limit: Int) {
+    allPlaylists(filter: $filter, sort: $sort, limit: $limit) {
       id
       name
       isMuseumFavorite

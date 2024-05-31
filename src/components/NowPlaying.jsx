@@ -11,7 +11,7 @@ export const NowPlaying = () => {
     const { statusData } = useContext(StatusContext);
     const { playlistSelected, setPlaylistSelected } = useContext(PlaylistContext);
 
-    const disablePlay = true;
+    // const disablePlay = process.env.NEXT_PUBLIC_DISABLE_PLAY;
 
     const [justSelected, setJustSelected] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -94,30 +94,32 @@ export const NowPlaying = () => {
                 )}
             </AnimatePresence>
 
-            <AnimatePresence>
-                {(isPlaying && currentPlaylistData) && (
-                    <motion.div
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
-                        <div className="absolute inset-0 flex justify-center items-center">
-                            <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-12">
-                                <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.mood.icon.id} />
-                                <motion.div
-                                    className="w-full"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: .8 }}
-                                >
-                                    <ProgressBar progress={progress} />
-                                </motion.div>
+            {/* {disablePlay != 'true' && ( */}
+                <AnimatePresence>
+                    {(isPlaying && currentPlaylistData) && (
+                        <motion.div
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
+                            <div className="absolute inset-0 flex justify-center items-center">
+                                <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-12">
+                                    <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.mood.icon.id} />
+                                    <motion.div
+                                        className="w-full"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: .8 }}
+                                    >
+                                        <ProgressBar progress={progress} />
+                                    </motion.div>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            {/* )} */}
 
             <div className="hidden">
                 <p className="absolute bottom-0 z-50 p-4 flex flex-row gap-1">
@@ -160,7 +162,7 @@ const LoadingBubble = ({ text, color, icon }) => {
                                 <div className="text-center text-white font-dukefill tracking-wide uppercase text-2xl sm:text-3xl">
                                     {text}
                                 </div>
-                                <div className={`img-${color} overflow-hidden rounded-full border-[1px] hidden xs:inline-block animate-bounce`}>
+                                <div className={`img-${color} overflow-hidden aspect-square rounded-full border-[1px] inline-flex`}>
                                     <Image
                                         src={`${filesBaseUrl}/${icon}?width=60&fit=contain`}
                                         width={42} height={42}
@@ -196,7 +198,7 @@ const PlayingBubble = ({ text, color, icon }) => {
                         {text}
                     </div>
 
-                    <div className={`img-${color} overflow-hidden rounded-full border-[1px] hidden xs:inline-block`}>
+                    <div className={`img-${color} overflow-hidden aspect-square rounded-full border-[1px] inline-flex`}>
                         <Image
                             src={`${filesBaseUrl}/${icon}?width=60&fit=contain`}
                             width={42} height={42}
@@ -213,7 +215,8 @@ const PlayingBubble = ({ text, color, icon }) => {
 const ProgressBar = ({ progress, loading }) => {
     if (loading) {
         return (
-            <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto">
+            <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto flex flex-col gap-4 justify-center items-center">
+                <progress className="progress progress-accent w-3/4 my-0 border border-night-100 overflow-hidden"></progress>
                 <div className="font-meta text-lg text-center">
                     Playing momentarily
                 </div>
@@ -222,9 +225,12 @@ const ProgressBar = ({ progress, loading }) => {
     }
 
     return (
-        <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto">
-            <div className="mx-auto h-4 w-full bg-night-800 border border-night-100 overflow-hidden">
+        <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto flex flex-col gap-4 justify-center items-center">
+            <div className="mx-auto my-0 h-4 w-3/4 bg-night-800 border border-night-100 overflow-hidden">
                 <div className="h-full bg-night-100 transition-all" style={{ width: `${progress}%` }}></div>
+            </div>
+            <div className="font-meta text-lg text-center">
+                {progress.toFixed(0)}%
             </div>
         </div>
     );

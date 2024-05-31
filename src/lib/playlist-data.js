@@ -3,8 +3,8 @@ import { gql } from "@apollo/client";
 let cacheDelay = parseInt(process.env.CACHE_DELAY); //seconds, ie 120
 export const revalidate = (Number.isInteger(cacheDelay) && cacheDelay > 0 ? cacheDelay : 120);
 
-const GetMuseumFavs = gql`query GetMuseumFavs($filter: allPlaylists_filter, $sort: [String]) {
-    allPlaylists(filter: $filter, sort: $sort) {
+const GetMuseumFavs = gql`query GetMuseumFavs($filter: allPlaylists_filter, $sort: [String], $limit: Int) {
+    allPlaylists(filter: $filter, sort: $sort, limit: $limit) {
       id
       name
       isMuseumFavorite
@@ -98,7 +98,8 @@ export const getMuseumFavs = async () => {
             }
           }
         },
-        sort: ["-date_created"]
+        sort: ["-date_created"],
+        limit: 4
       }
     });
     return data.allPlaylists;

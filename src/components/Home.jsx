@@ -21,7 +21,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
     const { data, error, isLoading } = useSWR(
         controlAPIStatus,
         fetcher,
-        { refreshInterval: 5 * 1000 }
+        { refreshInterval: 2 * 1000 }
     );
 
     useEffect(() => {
@@ -48,32 +48,48 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
 
     return (
         <Container className="">
-            <section>
-                <div>
-                    <div className="mb-10">
+            <section className="box-content">
+                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 px-14">
+
+                    {/* Grid Item 1 */}
+                    <div className="_pb-8">
                         <div className="relative h-14 sm:h-20 text-5xl sm:text-7xl uppercase leading-none">
                             <h1 className="absolute text-star-100 font-dukefill">{t('header')}</h1>
                             <h1 className="absolute text-star-200 font-dukeshadow">{t('header')}</h1>
                         </div>
                         <h2 className=" text-white font-meta text-xl">{t('subheader')}</h2>
                     </div>
-                    {museumFavs.length > 0 && (
-                        <div className="my-4">
-                            <p className="my-3 font-meta text-white uppercase">{t('favs')}</p>
-                            <div className={`grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 md:gap-5`}>
-                                {
-                                    museumFavs.map((playlist) => (
-                                        <div key={playlist.id}>
-                                            <PlaylistBtn playlist={playlist} />
-                                        </div>
-                                    ))
-                                }
+
+                    {/* Grid Item 2 */}
+                    <div className="_row-start-2 _row-span-1 _border">
+                        {museumFavs.length > 0 ? (
+                            <div className="_my-4">
+                                <p className="my-3 font-meta text-white uppercase">{t('favs')}</p>
+                                <div className={`grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 md:gap-4`}>
+                                    {
+                                        museumFavs.map((playlist) => (
+                                            <div key={playlist.id}>
+                                                <PlaylistBtn playlist={playlist} />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    <VisitorShows />
+                        ) : (
+                            <>
+                                <p className="my-3 font-meta text-white uppercase">{t('favs')}</p>
+                                <p className="font-meta text-base">No museum favorites found.</p>
+                            </>
+                        )}
+                    </div>
+
+                    {/* Grid Item 3 */}
+                    <VisitorShows className="_row-start-4 _row-span-1 overflow-scroll _border" />
+
+                    {/* Grid Item 4 */}
+                    
                 </div>
-                <LanguageSwitcher />
+                <LanguageSwitcher /> 
             </section>
         </Container>
     );
