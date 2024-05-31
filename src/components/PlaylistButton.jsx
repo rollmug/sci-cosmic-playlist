@@ -32,11 +32,14 @@ export const PlaylistBtn = ({ playlist, size = "large" }) => {
             if (data.success) {
                 setPlaylistSelected(playlist);
             } else {
-                alert("Error selecting playlist");
+                alert(`Error: ${data.error}`);
+                console.log(data.error);
+                console.log(raw);
                 setPlaylistSelected(null);
             }
         } catch (error) {
-            console.error(error);
+            console.log(error);
+            console.log(raw);
             alert(error);
         }
     }
