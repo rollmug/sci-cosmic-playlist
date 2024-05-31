@@ -18,7 +18,7 @@ export const VisitorShows = (params) => {
         console.log(error);
         return <div>Error loading</div>;
     }
-    
+
     if (isLoading) return;
 
     if (data.allPlaylists.length > 0) {
@@ -29,7 +29,7 @@ export const VisitorShows = (params) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    >
+                >
                     <div className="mb-4 mt-16">
                         <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -64,9 +64,11 @@ const variables = {
         name: {
             "_nempty": true
         },
-        icon: {
-            id: {
-                "_nnull": true
+        mood: {
+            icon: {
+                id: {
+                    "_nnull": true
+                }
             }
         },
         color: {
@@ -99,13 +101,11 @@ const visitorQuery = gql`query AllPlaylists($filter: allPlaylists_filter, $sort:
         color
       }
   
-      icon {
-        name
-        image {
+      mood {
+        icon {
           id
           filename_disk
           filename_download
-          type
         }
       }
     }

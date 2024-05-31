@@ -23,8 +23,8 @@ export const NowPlaying = () => {
         color: {
             name: "Yellow"
         },
-        icon: {
-            image: {
+        mood: {
+            icon: {
                 id: "12360800-7218-4f86-b53c-b1eb3e97ac3b"
             }
         }
@@ -87,7 +87,7 @@ export const NowPlaying = () => {
                         className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
                         <div className="absolute inset-0 flex justify-center items-center">
                             <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-8">
-                                <LoadingBubble text={playlistSelected.name} color={playlistSelected.color.name} icon={playlistSelected.icon.image.id} />
+                                <LoadingBubble text={playlistSelected.name} color={playlistSelected.color.name} icon={playlistSelected.mood.icon.id} />
                             </div>
                         </div>
                     </motion.div>
@@ -104,7 +104,7 @@ export const NowPlaying = () => {
                         className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
                         <div className="absolute inset-0 flex justify-center items-center">
                             <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-12">
-                                <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.icon.image.id} />
+                                <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.mood.icon.id} />
                                 <motion.div
                                     className="w-full"
                                     initial={{ opacity: 0 }}

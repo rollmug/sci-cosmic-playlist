@@ -16,14 +16,12 @@ const GetMuseumFavs = gql`query GetMuseumFavs($filter: allPlaylists_filter, $sor
         secondary_color
         color
       }
-      
-      icon {
-        name
-        image {
+
+      mood {
+        icon {
           id
           filename_disk
           filename_download
-          type
         }
       }
     }
@@ -44,9 +42,11 @@ export const getAllPlaylists = async () => {
           name: {
             "_nempty": true
           },
-          icon: {
-            id: {
-              "_nnull": true
+          mood: {
+            icon: {
+              id: {
+                "_nnull": true
+              }
             }
           },
           color: {
@@ -85,9 +85,11 @@ export const getMuseumFavs = async () => {
           name: {
             "_nempty": true
           },
-          icon: {
-            id: {
-              "_nnull": true
+          mood: {
+            icon: {
+              id: {
+                "_nnull": true
+              }
             }
           },
           color: {

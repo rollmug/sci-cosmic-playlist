@@ -57,7 +57,7 @@ export const PlaylistBtn = ({ playlist, size = "large" }) => {
         <div key={playlist.id} onClick={handleClick} className={parentClasses}>
             <div className={`img-${playlist.color.name} overflow-hidden rounded-full border-[1px] hidden xs:inline-block`}>
                 <Image
-                    src={`${filesBaseUrl}/${playlist.icon.image.id}?width=60&fit=contain`}
+                    src={`${filesBaseUrl}/${playlist.mood.icon.id}?width=60&fit=contain`}
                     width={42} height={42}
                     className={`${imgClasses} hidden xs:inline-block `}
                     priority
