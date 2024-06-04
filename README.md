@@ -58,3 +58,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 2. stop the running services (ie, `docker-compose down`).
 3. Run `git pull`.
 4. Start services again: `docker-compose up -d --build`
+
+## Run from another docker-compose file
+
+Install this project in a directory that contains an existing `docker-compose` file, as above. Then include the following in the existing docker-compose file:
+
+
+```yaml
+services:
+  # other services etc...
+
+  cosmic-playlist:
+    container_name: cosmic-playlist
+    build:
+      context: ./sci-cosmic-playlist
+      # above is the relative path to the app directory
+    restart: always
+    environment:
+      NODE_ENV: production
+    env_file: 
+      - .env.local
+    ports:
+      - 3000:3000
+    # networks:
+      # any networks here, if needed
+
+  # rest of compose file...
+```
+
+When launching, make sure you include the `build` commnad:
+
+```bash
+docker-compose up -d --build
+```

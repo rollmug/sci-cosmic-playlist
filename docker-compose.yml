@@ -3,16 +3,10 @@ services:
     container_name: cosmic-playlist
     build:
       context: .
-      # target: builder
     restart: always
-    # command: npm run dev
     environment:
       NODE_ENV: production
     env_file: 
       - .env.local
-    # volumes:
-    #   - .:/app
-    #   - /app/node_modules
-    #   - /app/.next
     ports:
       - 3000:3000
