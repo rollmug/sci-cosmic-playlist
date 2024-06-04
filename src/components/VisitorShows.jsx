@@ -7,6 +7,10 @@ import { gql, request } from 'graphql-request';
 import { motion, AnimatePresence } from "framer-motion";
 
 const limitShows = parseInt(process.env.NEXT_PUBLIC_LIMIT_SHOWS);
+var limitHours = parseInt(process.env.NEXT_PUBLIC_LIMIT_LAST_HOURS);
+if (!Number.isInteger(limitShows) || limitShows < 1) {
+    limitHours = 24;
+}
 
 export const VisitorShows = (params) => {
     const t = useTranslations('home');
@@ -37,11 +41,16 @@ export const VisitorShows = (params) => {
                         <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                             {
-                                data.allPlaylists.map((playlist) => (
-                                    <div key={playlist.id}>
-                                        <PlaylistBtn playlist={playlist} size="small" />
-                                    </div>
-                                ))
+                                data.allPlaylists.map((playlist) => {
+                                    const time = new Date(playlist.date_created);
+                                    const time2 = new Date();
+                                    const after = time2.setHours(time2.getHours() - limitHours);
+                                    if (time.getTime() >= after) {
+                                        return <div key={playlist.id}>
+                                            <PlaylistBtn playlist={playlist} size="small" />
+                                        </div>
+                                    }
+                                })
                             }
                         </div>
                     </div>

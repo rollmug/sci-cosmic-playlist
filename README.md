@@ -26,9 +26,18 @@ GRAPHQL_URL=https://path-to-directus/graphql
 FILES_BASE_URL=https://path-to-directus/assets
 
 CACHE_DELAY=60
+# in seconds, for the museum favorites
+
+LIMIT_SHOWS=30
+# the number of user playlists to limit results to
+LIMIT_LAST_HOURS=12
+# will only show results from the last x hours
+
 NEXT_PUBLIC_SCI_CONTROL_API_URL=$SCI_CONTROL_API_URL
 NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
 NEXT_PUBLIC_GRAPHQL_URL=$GRAPHQL_URL
+NEXT_PUBLIC_LIMIT_SHOWS=$LIMIT_SHOWS
+NEXT_PUBLIC_LIMIT_LAST_HOURS=$LIMIT_LAST_HOURS
 ```
 
 ## Development:

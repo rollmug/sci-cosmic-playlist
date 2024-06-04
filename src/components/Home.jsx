@@ -49,7 +49,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
     return (
         <Container className="">
             <section className="box-content">
-                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 px-14">
+                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 px-14 content-start">
 
                     {/* Grid Item 1 */}
                     <div className="_pb-8">
@@ -84,7 +84,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
                     </div>
 
                     {/* Grid Item 3 */}
-                    <VisitorShows className="_row-start-4 _row-span-1 overflow-scroll _border" />
+                    <VisitorShows className="_row-start-4 row-span-3 overflow-scroll" />
 
                     {/* Grid Item 4 */}
                     
