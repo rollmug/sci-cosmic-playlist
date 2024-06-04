@@ -91,3 +91,27 @@ When launching, make sure you include the `build` commnad:
 ```bash
 docker-compose up -d --build
 ```
+
+## Docker-compose from git
+
+To build directly from git, use the following in your docker-compose file:
+
+```yaml
+services:
+  # other services etc...
+
+  cosmic-playlist:
+    container_name: cosmic-playlist
+    build: https://github.com/rollmug/sci-cosmic-playlist.git
+    restart: always
+    environment:
+      NODE_ENV: production
+    env_file: 
+      - .env.local
+    ports:
+      - 3000:3000
+    # networks:
+      # any networks here, if needed
+
+  # rest of compose file...
+```
