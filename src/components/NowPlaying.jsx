@@ -66,7 +66,7 @@ export const NowPlaying = () => {
                 setProgress(parseFloat(statusData.currentPlaylist.progress_fraction) * 100);
                 setCurrentPlaylist(statusData.currentPlaylist); // this is data that comes from the status API
                 // currentPlaylistData is the data that comes from Directus GraphQL
-                console.log("currentPlaylistData", currentPlaylistData);
+                // console.log("currentPlaylistData", currentPlaylistData);
             } else {
                 setPlaylistSelected(null);
                 setJustSelected(false);

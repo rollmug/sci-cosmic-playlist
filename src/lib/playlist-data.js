@@ -40,20 +40,28 @@ export const getAllPlaylists = async () => {
       variables: {
         filter: {
           name: {
-            "_nempty": true
+            _nempty: true
           },
           mood: {
             icon: {
               id: {
-                "_nnull": true
+                _nnull: true
               }
             }
           },
           color: {
             name: {
-              "_nnull": true
+              _nnull: true
             }
-          }
+          },
+          _or: [
+            {
+              date_created: { _gte: "$NOW(-24 hours)" }
+            },
+            { 
+              isMuseumFavorite: { _eq: true } 
+            }
+          ]
         },
         sort: ["-date_created"],
         limit: 300
