@@ -55,7 +55,8 @@ export const getAllPlaylists = async () => {
             }
           }
         },
-        sort: ["-date_created"]
+        sort: ["-date_created"],
+        limit: 300
       }
     });
     return data.allPlaylists;
