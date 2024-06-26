@@ -47,7 +47,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
     }
 
     return (
-        <Container className="">
+        <Container className="main-player-ui-grid">
             <section className="box-content">
                 <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 px-14 content-start">
 
