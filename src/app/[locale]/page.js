@@ -11,8 +11,9 @@ export default async function Home({ params: { locale } }) {
     const controlAPIStatus = process.env.SCI_CONTROL_API_URL + "/status";
 
     try {
+
         // this is really just to check if the control API is available, not to do anything with the data.
-        const response = await fetch(controlAPIStatus, { cache: 'no-store' });
+        const response = await fetch(controlAPIStatus, { cache: 'no-store', signal: AbortSignal.timeout( 7500 ) });
         const status = await response.json();
 
         if (museumFavs.error) {
