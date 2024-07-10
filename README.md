@@ -33,6 +33,9 @@ LIMIT_SHOWS=30
 LIMIT_LAST_HOURS=12
 # will only show results from the last x hours
 
+DEV_MODE=true 
+# this should be false in production, or just commented out
+
 NEXT_PUBLIC_SCI_CONTROL_API_URL=$SCI_CONTROL_API_URL
 NEXT_PUBLIC_FILES_BASE_URL=$FILES_BASE_URL
 NEXT_PUBLIC_GRAPHQL_URL=$GRAPHQL_URL
