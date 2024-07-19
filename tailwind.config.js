@@ -63,8 +63,10 @@ module.exports = {
       },
       colors: {
         star: {
+          50: "#FFE58A",
           100: "#FFF09F",
           200: "#E6CE4A",
+          300: "#fbab18"
         },
         night: {
           100: "#A2BEF5",

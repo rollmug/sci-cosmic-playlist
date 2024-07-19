@@ -3,6 +3,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+docker-compose.prod.yaml
 
 # testing
 /coverage

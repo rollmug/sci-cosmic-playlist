@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useState, useEffect } from "react";
 import { useTranslations } from 'next-intl';
 import { PlaylistBtn } from "./PlaylistButton";
 import useSWR from 'swr';
@@ -14,11 +15,19 @@ if (!Number.isInteger(limitShows) || limitShows < 1) {
 
 export const VisitorShows = (params) => {
     const t = useTranslations('home');
+    var [date, setDate] = useState(new Date());
     const { data, error, isLoading } = useSWR(
         visitorQuery,
         graphQLFetcher,
         { refreshInterval: 100000 }
     );
+
+    useEffect(() => {
+        var timer = setInterval(() => setDate(new Date()), 60000 * 60);
+        return function cleanup() {
+            clearInterval(timer)
+        }
+    });
 
     if (error) {
         console.log(error);
@@ -38,7 +47,15 @@ export const VisitorShows = (params) => {
                     className={params.className}
                 >
                     <div className="mb-4 _mt-16">
-                        <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
+                        <div className="flex flex-row justify-between">
+                            <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
+                            <p className="my-3 font-meta text-white uppercase">
+                                {
+                                    new Intl.DateTimeFormat('en-US', {dateStyle: 'long'}).format(date)
+                                }
+                            </p>
+                        </div>
+                        
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                             {
                                 data.allPlaylists.map((playlist) => {

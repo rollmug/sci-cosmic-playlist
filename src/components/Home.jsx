@@ -78,7 +78,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
             {statusError ? <Error data={statusError} /> :
                 <Container className="main-player-ui-grid">
                     <section className="box-content">
-                        <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 px-14 content-start">
+                        <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 lg:gap-10 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 lg:pt-24 lg:pb-6 px-14 content-start">
 
                             {/* Grid Item 1 */}
                             <div className="_pb-8">
@@ -133,7 +133,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
 const LanguageSwitcher = () => {
     const locale = useLocale();
     return (
-        <div className="flex flex-row justify-center my-8">
+        <div className="flex flex-row justify-center my-4">
             <div className="flex flex-row gap-2 uppercase font-meta">
                 <Link href="/en/" className={`${locale === 'en' ? 'text-yellow-200' : ''}`}>eng</Link>
                 <span>|</span>
