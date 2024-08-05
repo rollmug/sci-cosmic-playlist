@@ -47,7 +47,12 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
             } else {
                 setStatusData(data);
 
-                if (data.currentPlaylist && data.currentPlaylist.id) {
+                if(data.mode === 'docent') {
+                    setStatusError({
+                        message: 'Docent Mode',
+                        error: 'The control API is in docent mode.'
+                    });
+                } else if (data.currentPlaylist && data.currentPlaylist.id) {
                     const playlist = allPlaylists.find(x => x.id === data.currentPlaylist.id);
                     setCurrentPlaylistData(playlist);
                 } else {
