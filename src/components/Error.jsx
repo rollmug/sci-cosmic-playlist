@@ -14,8 +14,8 @@ export const Error = ({ data }) => {
                 <p className="text-star-50 leading-none flex justify-center items-center w-full h-full absolute top-3 mx-auto text-center font-meta uppercase text-7xl">!</p>
             </div>
 
-            <h1 className=" text-2xl my-4 text-star-50">{data.message}</h1>
-            <div className="text-center" dangerouslySetInnerHTML={{ __html: data.error }} />
+            <h1 className=" text-2xl my-4 text-star-50">{data?.message}</h1>
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: data?.error }} />
         </div>
     </Container>
 }
