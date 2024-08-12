@@ -25,6 +25,12 @@ const nextConfig = {
                 pathname: '/**',
             },
             {
+                protocol: 'http',
+                hostname: '10.0.8.234',
+                port: '8055',
+                pathname: '/**',
+            },
+            {
                 protocol: 'https',
                 hostname: 'doppiocms.com',
                 port: '',
