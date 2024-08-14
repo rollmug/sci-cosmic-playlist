@@ -19,7 +19,7 @@ export const VisitorShows = (params) => {
     const { data, error, isLoading } = useSWR(
         visitorQuery,
         graphQLFetcher,
-        { refreshInterval: 100000 }
+        { refreshInterval: 20000 }
     );
 
     useEffect(() => {

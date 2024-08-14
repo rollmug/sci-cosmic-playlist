@@ -12,6 +12,8 @@ import { StatusContext } from "@/app/statusProvider";
 import { DataContext } from "@/app/dataProvider";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+import { GetPlaylistByID } from "@/lib/playlistByID";
+
 export const HomePage = ({ museumFavs, allPlaylists }) => {
     const { setStatusData } = useContext(StatusContext);
     const { setCurrentPlaylistData } = useContext(DataContext);
@@ -72,8 +74,18 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
                 setStatusData(data);
 
                 if (data.currentPlaylist && data.currentPlaylist.id) {
-                    const playlist = allPlaylists.find(x => x.id === data.currentPlaylist.id);
-                    setCurrentPlaylistData(playlist);
+                    let playlist = allPlaylists.find(x => x.id === data.currentPlaylist.id);
+                    console.log('playlist', playlist);
+
+                    if (!playlist) {
+                        console.log('playlist not found', data.currentPlaylist.id);
+                        playlist = GetPlaylistByID("302").then((playlistData) => {
+                            setCurrentPlaylistData(playlistData.allPlaylists_by_id);
+                            console.log('playlistData', playlistData.allPlaylists_by_id);
+                        });
+                    } else {
+                        setCurrentPlaylistData(playlist);
+                    }
                 } else {
                     setCurrentPlaylistData(null);
                 }

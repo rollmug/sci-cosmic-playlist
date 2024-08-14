@@ -11,44 +11,10 @@ export const NowPlaying = () => {
     const { statusData } = useContext(StatusContext);
     const { playlistSelected, setPlaylistSelected } = useContext(PlaylistContext);
 
-    // const disablePlay = process.env.NEXT_PUBLIC_DISABLE_PLAY;
-
     const [justSelected, setJustSelected] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [currentPlaylist, setCurrentPlaylist] = useState(null);
-
-    const testData = {
-        name: "Test Playlist",
-        color: {
-            name: "Yellow"
-        },
-        mood: {
-            icon: {
-                id: "12360800-7218-4f86-b53c-b1eb3e97ac3b"
-            }
-        }
-    }
-
-    const resetTest = () => {
-        setJustSelected(false);
-        setIsPlaying(false);
-        setProgress(0);
-        setCurrentPlaylist(null);
-        setPlaylistSelected(null);
-    };
-
-    const testSelected = () => {
-        setJustSelected(true);
-        setPlaylistSelected(testData);
-    }
-
-    const testPlaying = () => {
-        setJustSelected(false);
-        setIsPlaying(true);
-        setCurrentPlaylistData(testData);
-        setProgress(45);
-    }
 
     const { currentPlaylistData, setCurrentPlaylistData } = useContext(DataContext);
 
@@ -120,14 +86,6 @@ export const NowPlaying = () => {
                     )}
                 </AnimatePresence>
             {/* )} */}
-
-            <div className="hidden">
-                <p className="absolute bottom-0 z-50 p-4 flex flex-row gap-1">
-                    <button className="btn btn-info" onClick={testSelected}>Select</button>
-                    <button className="btn btn-accent" onClick={testPlaying}>Play</button>
-                    <button className="btn btn-neutral" onClick={resetTest}>Reset</button>
-                </p>
-            </div>
         </>
     );
 }
