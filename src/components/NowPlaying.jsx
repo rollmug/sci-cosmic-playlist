@@ -16,6 +16,38 @@ export const NowPlaying = () => {
     const [progress, setProgress] = useState(0);
     const [currentPlaylist, setCurrentPlaylist] = useState(null);
 
+    const testData = {
+        name: "Test Playlist",
+        color: {
+            name: "Yellow"
+        },
+        mood: {
+            icon: {
+                id: "12360800-7218-4f86-b53c-b1eb3e97ac3b"
+            }
+        }
+    }
+
+    const resetTest = () => {
+        setJustSelected(false);
+        setIsPlaying(false);
+        setProgress(0);
+        setCurrentPlaylist(null);
+        setPlaylistSelected(null);
+    };
+
+    const testSelected = () => {
+        setJustSelected(true);
+        setPlaylistSelected(testData);
+    }
+
+    const testPlaying = () => {
+        setJustSelected(false);
+        setIsPlaying(true);
+        setCurrentPlaylistData(testData);
+        setProgress(45);
+    }
+
     const { currentPlaylistData, setCurrentPlaylistData } = useContext(DataContext);
 
     useEffect(() => {
@@ -52,7 +84,7 @@ export const NowPlaying = () => {
                         transition={{ duration: 0.5 }}
                         className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
                         <div className="absolute inset-0 flex justify-center items-center">
-                            <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-8">
+                            <div className="text-white text-3xl font-meta w-full max-w-lg lg:max-w-5xl flex flex-col items-center gap-8">
                                 <LoadingBubble text={playlistSelected.name} color={playlistSelected.color.name} icon={playlistSelected.mood.icon.id} />
                             </div>
                         </div>
@@ -61,38 +93,46 @@ export const NowPlaying = () => {
             </AnimatePresence>
 
             {/* {disablePlay != 'true' && ( */}
-                <AnimatePresence>
-                    {(isPlaying && currentPlaylistData) && (
-                        <motion.div
-                            initial={{ opacity: 1 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
-                            <div className="absolute inset-0 flex justify-center items-center">
-                                <div className="text-white text-3xl font-meta w-full max-w-lg flex flex-col items-center gap-12">
-                                    <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.mood.icon.id} />
-                                    <motion.div
-                                        className="w-full"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ duration: .8 }}
-                                    >
-                                        <ProgressBar progress={progress} />
-                                    </motion.div>
-                                </div>
+            <AnimatePresence>
+                {(isPlaying && currentPlaylistData) && (
+                    <motion.div
+                        initial={{ opacity: 1 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute z-20 inset-0 bg-night-800 bg-opacity-75 h-full w-full">
+                        <div className="absolute inset-0 flex justify-center items-center">
+                            <div className="text-white text-3xl font-meta w-full max-w-lg lg:max-w-5xl flex flex-col items-center gap-12">
+                                <PlayingBubble text={currentPlaylistData.name} color={currentPlaylistData.color.name} icon={currentPlaylistData.mood.icon.id} />
+                                <motion.div
+                                    className="w-full"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: .8 }}
+                                >
+                                    <ProgressBar progress={progress} />
+                                </motion.div>
                             </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             {/* )} */}
+
+            <div className="hidden">
+                <p className="absolute bottom-0 z-50 p-4 flex flex-row gap-1">
+                    <button className="btn btn-info" onClick={testSelected}>Select</button>
+                    <button className="btn btn-accent" onClick={testPlaying}>Play</button>
+                    <button className="btn btn-neutral" onClick={resetTest}>Reset</button>
+                </p>
+            </div>
         </>
     );
 }
 
 const LoadingBubble = ({ text, color, icon }) => {
     const filesBaseUrl = process.env.NEXT_PUBLIC_FILES_BASE_URL;
-    var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-11 lg:h-11'].join(' ');
+    var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-20 lg:h-20'].join(' ');
     return (
         <>
             <motion.div
@@ -104,12 +144,12 @@ const LoadingBubble = ({ text, color, icon }) => {
                 }
             >
                 <motion.div
-                    className={`bg-${color}-primary bg-opacity-40 p-6 w-full aspect-square rounded-full `}
+                    className={`bg-${color}-primary bg-opacity-40 p-6 lg:p-12 w-full aspect-square rounded-full `}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: .5, duration: 1 }}
                 >
-                    <div className={`bg-${color}-primary w-full aspect-square rounded-full p-4`}>
+                    <div className={`bg-${color}-primary w-full aspect-square rounded-full p-4 lg:p-8`}>
                         <div className="bg-night-800 w-full aspect-square rounded-full flex flex-col gap-4 items-center justify-center">
                             <motion.div
                                 className="w-full aspect-square rounded-full flex flex-col gap-4 items-center justify-center"
@@ -117,13 +157,13 @@ const LoadingBubble = ({ text, color, icon }) => {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.5, duration: 1 }}
                             >
-                                <div className="text-center text-white font-dukefill tracking-wide uppercase text-2xl sm:text-3xl">
+                                <div className="text-center text-white font-dukefill tracking-wide uppercase text-2xl sm:text-3xl lg:text-5xl">
                                     {text}
                                 </div>
                                 <div className={`img-${color} overflow-hidden aspect-square rounded-full border-[1px] inline-flex`}>
                                     <Image
-                                        src={`${filesBaseUrl}/${icon}?width=60&fit=contain`}
-                                        width={42} height={42}
+                                        src={`${filesBaseUrl}/${icon}?width=100&fit=contain`}
+                                        width={72} height={72}
                                         className={`${imgClasses} hidden xs:inline-block `}
                                         priority
                                         alt="" />
@@ -147,19 +187,19 @@ const LoadingBubble = ({ text, color, icon }) => {
 
 const PlayingBubble = ({ text, color, icon }) => {
     const filesBaseUrl = process.env.NEXT_PUBLIC_FILES_BASE_URL;
-    var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-11 lg:h-11'].join(' ');
+    var imgClasses = ['w-7', 'h-7', 'md:w-10 md:h-10', 'lg:w-20 lg:h-20'].join(' ');
     return (
-        <div className={`bg-${color}-primary bg-opacity-40 p-6 w-[75%] aspect-square rounded-full `}>
-            <div className={`bg-${color}-primary w-full aspect-square rounded-full p-4`}>
+        <div className={`bg-${color}-primary bg-opacity-40 p-6 lg:p-12 w-[75%] aspect-square rounded-full `}>
+            <div className={`bg-${color}-primary w-full aspect-square rounded-full p-4 lg:p-8`}>
                 <div className="bg-night-800 w-full aspect-square rounded-full flex flex-col gap-4 items-center justify-center">
-                    <div className="text-center text-white font-dukefill tracking-wide uppercase text-2xl sm:text-3xl">
+                    <div className="text-center text-white font-dukefill tracking-wide uppercase text-2xl sm:text-3xl lg:text-5xl">
                         {text}
                     </div>
 
                     <div className={`img-${color} overflow-hidden aspect-square rounded-full border-[1px] inline-flex`}>
                         <Image
-                            src={`${filesBaseUrl}/${icon}?width=60&fit=contain`}
-                            width={42} height={42}
+                            src={`${filesBaseUrl}/${icon}?width=100&fit=contain`}
+                            width={72} height={72}
                             className={`${imgClasses} hidden xs:inline-block `}
                             priority
                             alt="" />
@@ -173,9 +213,9 @@ const PlayingBubble = ({ text, color, icon }) => {
 const ProgressBar = ({ progress, loading }) => {
     if (loading) {
         return (
-            <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto flex flex-col gap-4 justify-center items-center">
+            <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-3xl mx-auto flex flex-col gap-4 justify-center items-center">
                 <progress className="progress progress-accent w-3/4 my-0 border border-night-100 overflow-hidden"></progress>
-                <div className="font-meta text-lg text-center">
+                <div className="font-meta text-lg lg:text-2xl text-center">
                     Playing momentarily
                 </div>
             </div>
@@ -183,11 +223,11 @@ const ProgressBar = ({ progress, loading }) => {
     }
 
     return (
-        <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-md mx-auto flex flex-col gap-4 justify-center items-center">
-            <div className="mx-auto my-0 h-4 w-3/4 bg-night-800 border border-night-100 overflow-hidden">
+        <div className="w-full max-w-[70%] md:max-w-sm lg:max-w-3xl mx-auto flex flex-col gap-4 justify-center items-center">
+            <div className="mx-auto my-0 h-4 lg:h-6 w-3/4 bg-night-800 border border-night-100 overflow-hidden">
                 <div className="h-full bg-night-100 transition-all" style={{ width: `${progress}%` }}></div>
             </div>
-            <div className="font-meta text-lg text-center">
+            <div className="font-meta text-lg lg:text-2xl text-center">
                 {progress.toFixed(0)}%
             </div>
         </div>

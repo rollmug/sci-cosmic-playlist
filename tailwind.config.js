@@ -50,9 +50,11 @@ module.exports = {
       '2xl': '1.5rem',
       '3xl': '1.875rem',
       '4xl': '2.25rem',
+      '4.5xl': '2.45rem',
       '5xl': '3rem',
       '6xl': '4rem',
       '7xl': '5rem',
+      '8xl': '7.6rem',
     },
     extend: {
       fontFamily: {
@@ -64,8 +66,8 @@ module.exports = {
       colors: {
         star: {
           50: "#FFE58A",
-          100: "#FFF09F",
-          200: "#E6CE4A",
+          100: "#FFE58A",
+          200: "#FBAB18",
           300: "#fbab18"
         },
         night: {

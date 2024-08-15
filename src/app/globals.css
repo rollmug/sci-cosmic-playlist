@@ -22,7 +22,7 @@ body {
 }
 
 .progress {
-  @apply h-4 !rounded-none bg-night-800;
+  @apply h-4 lg:h-6 !rounded-none bg-night-800;
 }
 
 progress[value] {

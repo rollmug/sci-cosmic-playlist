@@ -126,23 +126,23 @@ const HomePageContent = ({ museumFavs }) => {
     return (
         <Container className="main-player-ui-grid">
             <section className="box-content">
-                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 lg:gap-10 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 lg:pt-24 lg:pb-6 px-14 content-start">
+                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 lg:gap-14 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 lg:pt-24 lg:pb-6 px-14 content-start">
 
                     {/* Grid Item 1 */}
                     <div className="_pb-8">
-                        <div className="relative h-14 sm:h-20 text-5xl sm:text-7xl uppercase leading-none">
+                        <div className="relative h-14 sm:h-20 lg:h-28 text-5xl sm:text-7xl lg:text-8xl uppercase leading-none">
                             <h1 className="absolute text-star-100 font-dukefill">{t('header')}</h1>
                             <h1 className="absolute text-star-200 font-dukeshadow">{t('header')}</h1>
                         </div>
-                        <h2 className=" text-white font-meta text-xl">{t('subheader')}</h2>
+                        <h2 className=" text-white font-meta text-xl lg:text-4.5xl">{t('subheader')}</h2>
                     </div>
 
                     {/* Grid Item 2 */}
                     <div className="_row-start-2 _row-span-1 _border">
                         {museumFavs.length > 0 ? (
                             <div className="_my-4">
-                                <p className="my-3 font-meta text-white uppercase">{t('favs')}</p>
-                                <div className={`grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 md:gap-4`}>
+                                <p className="my-3 font-meta text-white uppercase lg:text-2xl leading-relaxed lg:tracking-wide">{t('favs')}</p>
+                                <div className={`grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 md:gap-4 lg:gap-y-6`}>
                                     {
                                         museumFavs.map((playlist) => (
                                             <div key={playlist.id}>
@@ -154,7 +154,7 @@ const HomePageContent = ({ museumFavs }) => {
                             </div>
                         ) : (
                             <>
-                                <p className="my-3 font-meta text-white uppercase">{t('favs')}</p>
+                                <p className="my-3 font-meta text-white uppercase lg:text-2xl leading-relaxed lg:tracking-wide">{t('favs')}</p>
                                 <p className="font-meta text-base">No museum favorites found.</p>
                             </>
                         )}

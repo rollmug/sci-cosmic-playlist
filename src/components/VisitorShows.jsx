@@ -48,15 +48,15 @@ export const VisitorShows = (params) => {
                 >
                     <div className="mb-4 _mt-16">
                         <div className="flex flex-row justify-between">
-                            <p className="my-3 font-meta text-white uppercase">{t('visitors')}</p>
-                            <p className="my-3 font-meta text-white uppercase">
+                            <p className="my-3 font-meta text-white uppercase lg:text-2xl leading-relaxed lg:tracking-wide">{t('visitors')}</p>
+                            <p className="my-3 font-meta text-white uppercase lg:text-2xl leading-relaxed lg:tracking-wide">
                                 {
                                     new Intl.DateTimeFormat('en-US', {dateStyle: 'long'}).format(date)
                                 }
                             </p>
                         </div>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 lg:gap-y-5">
                             {
                                 data.allPlaylists.map((playlist) => {
                                     const time = new Date(playlist.date_created);

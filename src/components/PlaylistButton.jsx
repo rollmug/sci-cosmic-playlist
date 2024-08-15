@@ -48,20 +48,20 @@ export const PlaylistBtn = ({ playlist, size = "large" }) => {
         selectPlaylist(playlistID);
     }
 
-    var parentClasses = ['btn', 'h-auto', 'font-normal', 'text-2xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
-    var imgClasses = ['w-7', 'h-7', 'md:w-8 md:h-8', 'lg:w-9 lg:h-9'].join(' ');
+    var parentClasses = ['btn', 'h-auto', 'font-normal', 'text-2xl', 'lg:text-4xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'lg:p-3', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex', 'lg:gap-4'].join(' ');
+    var imgClasses = ['w-7', 'h-7', 'md:w-8 md:h-8', 'lg:w-16 lg:h-16'].join(' ');
 
     if (size === 'small') {
-        parentClasses = ['btn', 'h-auto', 'font-normal', 'text-xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex'].join(' ');
-        imgClasses = ['w-5', 'h-5', 'md:w-6', 'md:h-6', 'lg:w-7', 'lg:h-7'].join(' ');
+        parentClasses = ['btn', 'h-auto', 'font-normal', 'text-xl', 'lg:text-2xl', 'uppercase', 'btn-neutral', 'rounded-none', 'p-2', 'lg:p-3', 'bg-gradient-to-b', 'from-night-200', 'to-night-900', 'flex', 'lg:gap-3'].join(' ');
+        imgClasses = ['w-5', 'h-5', 'md:w-6', 'md:h-6', 'lg:w-10', 'lg:h-10'].join(' ');
     }
 
     return (
-        <div key={playlist.id} onClick={handleClick} className={parentClasses}>
+        <div key={playlist.id} onClick={handleClick} className={`${parentClasses} justify-start`}>
             <div className={`img-${playlist.color.name} overflow-hidden rounded-full border-[1px] hidden xs:inline-block`}>
                 <Image
-                    src={`${filesBaseUrl}/${playlist.mood.icon.id}?width=60&fit=contain`}
-                    width={42} height={42}
+                    src={`${filesBaseUrl}/${playlist.mood.icon.id}?width=100&fit=contain`}
+                    width={64} height={64}
                     className={`${imgClasses} hidden xs:inline-block `}
                     priority
                     alt="" />
