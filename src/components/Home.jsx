@@ -126,11 +126,11 @@ const HomePageContent = ({ museumFavs }) => {
     return (
         <Container className="main-player-ui-grid">
             <section className="box-content">
-                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 lg:gap-14 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 lg:pt-24 lg:pb-6 px-14 content-start">
+                <div className="grid _grid-rows-3 gap-3 sm:gap-4 md:gap-6 lg:gap-24 h-[calc(100vh-70px)] max-h-screen overflow-hidden pt-14 lg:pt-52 lg:pb-6 px-14 content-start">
 
                     {/* Grid Item 1 */}
                     <div className="_pb-8">
-                        <div className="relative h-14 sm:h-20 lg:h-28 text-5xl sm:text-7xl lg:text-8xl uppercase leading-none">
+                        <div className="relative h-14 sm:h-20 lg:h-32 text-5xl sm:text-7xl lg:text-8xl uppercase leading-none">
                             <h1 className="absolute text-star-100 font-dukefill">{t('header')}</h1>
                             <h1 className="absolute text-star-200 font-dukeshadow">{t('header')}</h1>
                         </div>

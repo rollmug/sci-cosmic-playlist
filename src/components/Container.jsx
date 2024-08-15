@@ -11,7 +11,7 @@ export const Container = (props) => {
         <>
             <main className={`min-h-screen relative ${props.className}`}>
                 <Image src={Background} priority fill className="w-full h-full object-cover object-bottom z-0" alt="" />
-                <section className="relative z-10 container mx-auto max-w-4xl lg:max-w-full lg:px-6 _p-14">
+                <section className="relative z-10 container mx-auto max-w-4xl lg:max-w-full lg:px-10 _p-14">
                     {props.children}
                 </section>
 
