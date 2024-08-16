@@ -175,7 +175,7 @@ const HomePageContent = ({ museumFavs }) => {
 const LanguageSwitcher = () => {
     const locale = useLocale();
     return (
-        <div className="flex flex-row justify-center my-4">
+        <div className="hidden _flex flex-row justify-center my-4">
             <div className="flex flex-row gap-2 uppercase font-meta">
                 <Link href="/en/" className={`${locale === 'en' ? 'text-yellow-200' : ''}`}>eng</Link>
                 <span>|</span>
