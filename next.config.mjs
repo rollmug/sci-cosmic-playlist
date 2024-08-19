@@ -20,28 +20,28 @@ const nextConfig = {
             },
             {
                 protocol: 'http',
+                hostname: '192.168.4.207',
+                port: '9980',
+                pathname: '/**',
+            },
+            {
+                protocol: 'http',
                 hostname: '10.0.11.176',
                 port: '8055',
-                pathname: '/**',
+                pathname: '/assets/**/**',
             },
             {
                 protocol: 'http',
                 hostname: '10.0.8.234',
                 port: '8055',
-                pathname: '/**',
-            },
-            {
-                protocol: 'http',
-                hostname: '**',
-                port: '8055',
                 pathname: '/assets/**/**',
             },
             {
-                protocol: 'https',
-                hostname: 'doppiocms.com',
-                port: '',
-                pathname: '/**',
-            },
+                protocol: 'http',
+                hostname: '192.168.4.207',
+                port: '8055',
+                pathname: '/assets/**/**',
+            }
         ]
     },
 };
