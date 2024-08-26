@@ -79,7 +79,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
 
                     if (!playlist) {
                         console.log('playlist not found', data.currentPlaylist.id);
-                        playlist = GetPlaylistByID("302").then((playlistData) => {
+                        playlist = GetPlaylistByID(data.currentPlaylist.id).then((playlistData) => {
                             setCurrentPlaylistData(playlistData.allPlaylists_by_id);
                             console.log('playlistData', playlistData.allPlaylists_by_id);
                         });
