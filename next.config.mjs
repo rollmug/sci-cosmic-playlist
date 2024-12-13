@@ -20,7 +20,7 @@ const nextConfig = {
             },
             {
                 protocol: 'http',
-                hostname: '192.168.4.207',
+                hostname: '192.168.4.116',
                 port: '9980',
                 pathname: '/**',
             },
@@ -38,7 +38,7 @@ const nextConfig = {
             },
             {
                 protocol: 'http',
-                hostname: '192.168.4.207',
+                hostname: '192.168.4.116',
                 port: '8055',
                 pathname: '/assets/**/**',
             }
