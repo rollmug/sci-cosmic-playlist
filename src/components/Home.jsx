@@ -97,7 +97,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
 
     if (isLoading) {
         return <Error data={{
-            error: '',
+            error: 'Loading...',
             message: 'Loading...'
         }} />
     }
@@ -108,6 +108,12 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
             message: 'Error'
         }} />
     }
+
+    // to test the error message, uncomment the following block
+    // return <Error data={{
+    //     error: 'The control API is not available.',
+    //     message: 'Error'
+    // }} />
 
     return (
         <>
@@ -131,8 +137,8 @@ const HomePageContent = ({ museumFavs }) => {
                     {/* Grid Item 1 */}
                     <div className="_pb-8">
                         <div className="relative h-14 sm:h-20 lg:h-32 text-5xl sm:text-7xl lg:text-8xl uppercase leading-none">
-                            <h1 className="absolute text-star-100 font-dukefill">{t('header')}</h1>
-                            <h1 className="absolute text-star-200 font-dukeshadow">{t('header')}</h1>
+                            <h1 className="absolute _text-star-100 text-white font-dukefill _font-duke">{t('header')}</h1>
+                            {/* <h1 className="hidden absolute text-star-200 font-dukeshadow">{t('header')}</h1> */}
                         </div>
                         <h2 className=" text-white font-meta text-xl lg:text-4.5xl">{t('subheader')}</h2>
                     </div>

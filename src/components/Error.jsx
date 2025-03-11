@@ -11,11 +11,11 @@ export const Error = ({ data }) => {
                         <path d="M 100 16.00433349609375 L 13.85392761230469 165.267333984375 L 186.1460723876953 165.267333984375 L 100 16.00433349609375 M 100 0 L 200 173.267333984375 L 0 173.267333984375 L 100 0 Z" stroke="none" fill="currentColor" />
                     </g>
                 </svg>
-                <p className="text-star-50 leading-none flex justify-center items-center w-full h-full absolute top-3 mx-auto text-center font-meta uppercase text-7xl lg:text-8xl">!</p>
+                <p className="_text-star-50 text-white leading-none flex justify-center items-center w-full h-full absolute top-3 mx-auto text-center font-meta uppercase text-7xl lg:text-8xl">!</p>
             </div>
 
-            <h1 className=" text-2xl lg:text-5xl my-4 text-star-50">{data?.message}</h1>
-            <div className="text-center lg:text-3xl" dangerouslySetInnerHTML={{ __html: data?.error }} />
+            {/* <h1 className=" text-2xl lg:text-5xl my-4 text-star-50">{data?.message}</h1> */}
+            <div className="text-center mt-6 font-meta text-white lg:text-3xl" dangerouslySetInnerHTML={{ __html: data?.error }} />
         </div>
     </Container>
 }
