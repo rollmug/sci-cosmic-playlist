@@ -68,7 +68,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
             } else if (mode === 'docent') {
                 setStatusError({
                     message: 'Docent Mode',
-                    error: 'The control API is in docent mode.'
+                    error: 'The Cosmic Jukebox is off.'
                 });
             } else {
                 setStatusData(data);
@@ -119,7 +119,7 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
         <>
             {(status === 'Error' && devMode !== 'true') && <Error data={statusError} />}
 
-            {(mode && mode === 'docent' && status === 'OK') && <Error data={{ error: 'The control API is in docent mode.', message: 'Docent Mode' }} />}
+            {(mode && mode === 'docent' && status === 'OK') && <Error data={{ error: 'The Cosmic Jukebox is off.', message: 'Docent Mode' }} />}
 
             {/* { (data && mode !== 'docent' && status !== 'Error') ? <HomePageContent museumFavs={museumFavs} /> : <Error data={{ error: 'The control API is not available.', message: 'Error' }} />} */}
 
