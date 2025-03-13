@@ -121,7 +121,11 @@ export const HomePage = ({ museumFavs, allPlaylists }) => {
 
             {(mode && mode === 'docent' && status === 'OK') && <Error data={{ error: 'The control API is in docent mode.', message: 'Docent Mode' }} />}
 
-            {data ? <HomePageContent museumFavs={museumFavs} /> : <Error data={{ error: 'The control API is not available.', message: 'Error' }} />}
+            {/* { (data && mode !== 'docent' && status !== 'Error') ? <HomePageContent museumFavs={museumFavs} /> : <Error data={{ error: 'The control API is not available.', message: 'Error' }} />} */}
+
+            { (data && mode !== 'docent' && status !== 'Error') && <HomePageContent museumFavs={museumFavs} /> }
+
+            { !data && <Error data={{ error: 'The control API is not available.', message: 'Error' }} /> }
         </>
     );
 };
