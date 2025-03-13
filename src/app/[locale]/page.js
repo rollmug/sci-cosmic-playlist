@@ -16,9 +16,9 @@ export default async function Home({ params: { locale } }) {
         const response = await fetch(controlAPIStatus, { cache: 'no-store', signal: AbortSignal.timeout( 7500 ) });
         const status = await response.json();
 
-        if (museumFavs.error) {
-            return <Error data={museumFavs} />
-        }
+        // if (museumFavs.error) {
+        //     return <Error data={museumFavs} />
+        // }
 
         return (
             <HomePage museumFavs={museumFavs} allPlaylists={allPlaylists} />
